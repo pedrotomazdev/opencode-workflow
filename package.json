@@ -1,0 +1,19 @@
+{
+  "name": "opencode",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.1",
+    "gulp-minify-css": "^0.3.8",
+    "gulp-sass": "^0.7.3",
+    "gulp-util": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Richard Santos",
+  "license": "ISC"
+}
