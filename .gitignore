@@ -1,3 +1,7 @@
-node_modules/
-.DS_Store
-bower_components/
+# everything
+*
+
+# except
+!.gitignore
+!package.json
+!gulpfile.js
