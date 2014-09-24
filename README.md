@@ -40,3 +40,10 @@ Para que o task runner funcione corretamente, precisará existir essa estrutura 
                 b.js
                 c.js
             theme.min.js
+
+## Criando e alterando lojas
+
+1. Execute no terminal ssh: `sh clone.sh {ID_LOJA}`
+2. Entre na pasta da loja `cd {ID_LOJA}`
+3. Execute `opencode configure API_KEY API_PASSWORD THEME_ID`
+4. Execute `opencode download` para baixar todos os arquivos do tema
