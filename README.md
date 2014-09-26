@@ -8,7 +8,7 @@ Estrutura e dependências do fluxo de trabalho do Tray OpenCode.
 2. Instale as dependências: `npm install`
 3. Rode o task runner: `gulp`
 
-**Obs:** Se o Gulp não estiver rodando corretamente no Windows, tente o seguinte o comando: `node node_modules/gulp/bin/gulp.js`
+**Obs:** Se o Gulp não estiver rodando corretamente no Windows, execute o seguinte comando: `node node_modules/gulp/bin/gulp.js`
 
 ## Estrutura de pastas
 

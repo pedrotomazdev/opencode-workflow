@@ -13,8 +13,6 @@ var gulp = require("gulp"),
 var SASSPATH, CSSPATH, JSPATH;
 
 gulp.task('sass', function(){
-  console.log(SASSPATH);
-  console.log(CSSPATH);
   gulp.src(SASSPATH + '/theme.min.scss')
     .pipe(sass())
     .pipe(concat('theme.min.css'))
