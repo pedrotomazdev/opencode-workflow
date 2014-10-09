@@ -44,8 +44,10 @@ Para que o task runner funcione corretamente, precisará existir essa estrutura 
                 theme.min.js
 
 ## Criando e alterando lojas
+Execute os seguintes comandos no terminal ssh:
 
-1. Execute no terminal ssh: `sh clone.sh {ID_LOJA}`
-2. Entre na pasta da loja `cd {ID_LOJA}`
-3. Execute `opencode configure API_KEY API_PASSWORD THEME_ID`
-4. Execute `opencode download` para baixar todos os arquivos do tema
+1. `sh clone.sh {ID_LOJA}` - cria ou clona uma loja
+2. `cd {ID_LOJA}`
+3. `opencode configure API_KEY API_PASSWORD THEME_ID` - configura o tema que será modificado
+4. `opencode download` - baixa todos os arquivos do tema
+5. `opencode watch` - habilita a sincronização automática
