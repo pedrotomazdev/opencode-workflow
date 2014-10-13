@@ -34,7 +34,7 @@ gulp.task('plugins', function(){
   gulp.src(pluginsFile + "/*.js")
     .pipe(concat("plugins.min.js"))
     .pipe(uglify({"compress": false}))
-    .pipe(gulp.dest(pluginsFile + "/dist/"))
+    .pipe(gulp.dest(pluginsFile + "/dist/"));
 });
 
 // watchers
