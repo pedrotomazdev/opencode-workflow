@@ -14,7 +14,7 @@ var SASSPATH, CSSPATH, JSPATH;
 
 gulp.task('sass', function(){
   gulp.src(SASSPATH + '/theme.min.scss')
-    .pipe(sass())
+    .pipe(sass({errLogToConsole: true}))
     .pipe(concat('theme.min.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest(CSSPATH));
