@@ -27,6 +27,16 @@ gulp.task('js', function(){
     .pipe(gulp.dest(path.resolve(JSPATH, "../")));
 });
 
+// src plugins
+var pluginsFile = path.resolve(process.cwd(), "../plugins");
+
+gulp.task('plugins', function(){
+  gulp.src(pluginsFile + "/*.js")
+    .pipe(concat("plugins.min.js"))
+    .pipe(uglify({"compress": false}))
+    .pipe(gulp.dest(pluginsFile + "/dist/"))
+});
+
 // watchers
 var cssWatcher = gulp.watch('**/*.scss', ['sass']);
 cssWatcher.on("change", function(event) {
@@ -39,4 +49,4 @@ jsWatcher.on("change", function(event) {
   JSPATH = path.resolve(event.path, "../");
 });
 
-gulp.task("default");
+gulp.task("default", ["plugins"]);
