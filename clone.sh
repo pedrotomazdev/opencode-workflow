@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # vars
-gitServer=/w/layout/
+gitServer=/y/layout/
 storeID=$1
 newStoreRepo=$gitServer$storeID'.git'
 devArea=$(pwd)
