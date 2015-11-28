@@ -7,12 +7,14 @@ var gulp = require("gulp"),
   sass = require("gulp-sass"),
   concat = require("gulp-concat"),
   less = require("gulp-less"),
+  stylus = require('gulp-stylus');
   minifyCSS = require("gulp-minify-css"),
   uglify = require("gulp-uglify"),
   path = require("path");
 
 var SASSPATH,
     LESSPATH,
+    STYLPATH,
     CSSPATH,
     JSPATH;
 
@@ -32,6 +34,14 @@ gulp.task('less', function() {
     .pipe(gulp.dest(CSSPATH));
 });
 
+gulp.task('stylus', function() {
+    gulp.src(STYLPATH + '/theme.min.styl')
+        .pipe(stylus())
+        .pipe(concat('theme.min.css'))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(CSSPATH));
+});
+
 gulp.task('js', function(){
   gulp.src(JSPATH + "/*.js")
     .pipe(concat("theme.min.js"))
@@ -49,6 +59,12 @@ cssWatcher.on("change", function(event) {
 var lessWatcher = gulp.watch('**/*.less', ['less']);
 lessWatcher.on("change", function(event) {
     LESSPATH = path.resolve(event.path, "../");
+    CSSPATH  = path.resolve(event.path, "../../");
+});
+
+var stylWatcher = gulp.watch('**/*.styl', ['stylus']);
+stylWatcher.on("change", function(event) {
+    STYLPATH = path.resolve(event.path, "../");
     CSSPATH  = path.resolve(event.path, "../../");
 });
 
