@@ -2,6 +2,7 @@
  * Gulpfile
  * @author Richard Santos <rsantos@tray.com.br>
  */
+'use strict';
 
 var gulp = require('gulp');
 var util = require('gulp-util');
@@ -20,12 +21,13 @@ var process = require('process');
 /**
  * Get CLI args
  */
-for (i = process.argv.length; i > 0; i--) {
+var FOLDER;
+for (var i = process.argv.length; i > 0; i--) {
     var arg = process.argv[i];
     var nextArg = process.argv[i + 1];
 
     if (arg == '--folder' && nextArg) {
-        const FOLDER = process.cwd() + '/' + nextArg;
+        FOLDER = process.cwd() + '/' + nextArg;
     }
 }
 
@@ -50,7 +52,7 @@ if (!URL) {
 const CSSPATH = FOLDER + '/css/';
 const JSPATH = FOLDER + '/js/';
 
-gulp.task('sass', function(){
+gulp.task('sass', () => {
   gulp.src(CSSPATH + 'sass/theme.min.scss')
     .pipe(sass({errLogToConsole: true}))
     .pipe(concat('theme.min.css'))
@@ -58,7 +60,7 @@ gulp.task('sass', function(){
     .pipe(gulp.dest(CSSPATH));
 });
 
-gulp.task('less', function() {
+gulp.task('less', () => {
     gulp.src(CSSPATH + 'less/theme.min.less')
     .pipe(less())
     .pipe(concat('theme.min.css'))
@@ -66,7 +68,7 @@ gulp.task('less', function() {
     .pipe(gulp.dest(CSSPATH));
 });
 
-gulp.task('stylus', function() {
+gulp.task('stylus', () => {
     gulp.src(CSSPATH + 'stylus/theme.min.styl')
         .pipe(stylus())
         .pipe(concat('theme.min.css'))
@@ -74,14 +76,14 @@ gulp.task('stylus', function() {
         .pipe(gulp.dest(CSSPATH));
 });
 
-gulp.task('js', function(){
+gulp.task('js', () => {
   gulp.src(JSPATH + "modules/*.js")
     .pipe(concat("theme.min.js"))
     .pipe(uglify({"compress": false}))
     .pipe(gulp.dest(JSPATH));
 });
 
-gulp.task('bsync', function() {
+gulp.task('bsync', () => {
     bSync.init({
         logPrefix: 'Tray Opencode',
         open: 'external',
@@ -92,7 +94,7 @@ gulp.task('bsync', function() {
     });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch(CSSPATH + 'sass/*', ['sass']);
     gulp.watch(CSSPATH + 'less/*', ['less']);
     gulp.watch(CSSPATH + 'stylus/*', ['stylus']);
