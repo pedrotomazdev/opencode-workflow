@@ -32,7 +32,7 @@ for (var i = process.argv.length; i > 0; i--) {
 }
 
 if (!FOLDER) {
-    var example = 'gulp watch --folder opencode.commercesuite.com.br';
+    var example = 'gulp --folder opencode.commercesuite.com.br';
     util.log(util.colors.red('Error: missing param: --folder, ex: ' + example));
     process.exit(1);
 }
@@ -91,7 +91,7 @@ gulp.task('bsync', () => {
         proxy: {
             target: URL
         },
-        port: 3000,
+        port: 8082,
         https: true,
         files: FOLDER + '/**/*.*'
     });
