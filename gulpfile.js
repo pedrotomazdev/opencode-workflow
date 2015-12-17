@@ -17,6 +17,7 @@ var uglify = require('gulp-uglify');
 var path = require('path');
 var yaml = require('js-yaml');
 var process = require('process');
+var cp = require('child_process');
 
 /**
  * Get CLI args
@@ -87,13 +88,33 @@ gulp.task('js', () => {
 gulp.task('bsync', () => {
     bSync.init({
         logPrefix: 'Tray Opencode',
-        open: 'external',
+        logFileChanges: false,
+        open: 'local',
         proxy: {
             target: URL
         },
-        port: 8082,
+        reloadDelay: 800,
+        port: 3000,
         https: true,
         files: FOLDER + '/**/*.*'
+    });
+});
+
+gulp.task('opencode', () => {
+    process.chdir(FOLDER);
+
+    var opencode = cp.spawn('opencode', ['watch']);
+
+    opencode.stdout.on('data', (data) => {
+        var output = util.colors.green(data);
+        if (data.indexOf('Error') > -1) {
+            output = util.colors.bgRed(data);
+        }
+        process.stdout.write(output);
+    });
+
+    opencode.stderr.on('data', (data) => {
+        process.stdout.write(util.colors.bgRed(prefix + data));
     });
 });
 
@@ -104,4 +125,12 @@ gulp.task('watch', () => {
     gulp.watch(JSPATH + 'modules/*.js', ['js']);
 });
 
-gulp.task('default', ['sass', 'less', 'stylus', 'js', 'bsync', 'watch']);
+gulp.task('default', [
+    'sass',
+    'less',
+    'stylus',
+    'js',
+    'watch',
+    'opencode',
+    'bsync' // comment this line if you're using remotes envs (Cloud 9, etc...)
+ ]);
