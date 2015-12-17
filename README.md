@@ -1,53 +1,56 @@
 # Tray OpenCode Workflow
 
-Estrutura e dependências do fluxo de trabalho do Tray OpenCode.
+O Tray OpenCode Workflow é um conjunto de ferramentas frontend que agiliza a criação de layouts.
+
+**Ferramentas configuradas:**
+* CSS
+  * SASS
+  * LESS
+  * STYLUS
+* JS
+  * Modularização de arquivos
+  * Uglify
+* BrowserSync
 
 ## Instalação
+Pré-requisitos: NodeJS e NPM
 
-1. `git clone git@github.com:tray-tecnologia/opencode-workflow.git minha-area`
-2. `cd minha-area`
-3. `npm install` - instala as dependências
-4. `gulp` - inicia as tarefas do gulp
+1. `git clone git@github.com:tray-tecnologia/opencode-workflow.git`
+2. `cd opencode-workflow`
+3. `npm install -g gulp`
+4. `npm install`
 
-**Obs:** Se o Gulp não estiver rodando corretamente no Windows, execute o seguinte comando: `node node_modules/gulp/bin/gulp.js`
+## Configuração/Uso OpenCode GEM
+Pré-requisito: `gem install opencode_theme`
+
+1. `mkdir opencode.commercesuite.com.br`
+2. `cd opencode.commercesuite.com.br`
+3. `opencode configure 11451c354c1f95fe60f80d7672bf184a 14ae838d9e971465af45b35803b8f0a4 3`
+4. `opencode download`
+5. `opencode watch`
+
+## Configuração/Uso OpenCode Workflow
+
+1. `cd /path/to/opencode-workflow`
+2. `gulp --folder opencode.commercesuite.com.br`
 
 ## Estrutura de pastas
 
 Para que o task runner funcione corretamente, precisará existir essa estrutura de pastas:
 
-    minha-area/
-        351572/
+    opencode-workflow/
+        opencode.commercesuite.com.br/
             css/
-                sass/
-                    a.scss
-                    b.scss
-                    c.scss
-                theme.min.css
             js/
-                modules/
-                    a.js
-                    b.js
-                    c.js
-                theme.min.js
-        108099/
+            img/
+            layouts/
+            pages/
+            config.yml
+        lojademo.commercesuite.com.br/
             css/
-                sass/
-                    a.scss
-                    b.scss
-                    c.scss
-                theme.min.css
             js/
-                modules/
-                    a.js
-                    b.js
-                    c.js
-                theme.min.js
-
-## Criando e alterando lojas
-Execute os seguintes comandos no terminal ssh:
-
-1. `sh clone.sh {ID_LOJA}` - cria ou clona uma loja
-2. `cd {ID_LOJA}`
-3. `opencode configure API_KEY API_PASSWORD THEME_ID` - configura o tema que será modificado
-4. `opencode download` - baixa todos os arquivos do tema
-5. `opencode watch` - habilita a sincronização automática
+            img/
+            layouts/
+            pages/
+            config.yml
+        gulpfile.js
