@@ -17,8 +17,14 @@
   "devDependencies": {
     "browser-sync": "^2.10.0"
   },
+  "config": {
+    "unsafe-perm": true
+  },
+  "scripts": {
+    "postinstall": "sudo gem install opencode_theme"
+  },
   "author": "Richard Santos",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:tray-tecnologia/opencode-workflow.git"

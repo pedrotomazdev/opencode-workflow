@@ -34,7 +34,7 @@ for (var i = process.argv.length; i > 0; i--) {
 if (!FOLDER) {
     var example = 'gulp watch --folder opencode.commercesuite.com.br';
     util.log(util.colors.red('Error: missing param: --folder, ex: ' + example));
-    return false;
+    process.exit(1);
 }
 
 /**
@@ -46,7 +46,7 @@ const URL = configOpenCode[':preview_url'];
 
 if (!URL) {
     util.log(util.colors.red('Error: Did you configured opencode? Check your file: ' + configYML));
-    return false;
+    process.exit(1);
 }
 
 const CSSPATH = FOLDER + '/css/';
@@ -55,6 +55,7 @@ const JSPATH = FOLDER + '/js/';
 gulp.task('sass', () => {
   gulp.src(CSSPATH + 'sass/theme.min.scss')
     .pipe(sass({errLogToConsole: true}))
+    .on('error', util.log)
     .pipe(concat('theme.min.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest(CSSPATH));
@@ -87,10 +88,12 @@ gulp.task('bsync', () => {
     bSync.init({
         logPrefix: 'Tray Opencode',
         open: 'external',
-        proxy: URL,
+        proxy: {
+            target: URL
+        },
         port: 3000,
         https: true,
-        files: FOLDER + '/**/*.*',
+        files: FOLDER + '/**/*.*'
     });
 });
 
@@ -101,4 +104,4 @@ gulp.task('watch', () => {
     gulp.watch(JSPATH + 'modules/*.js', ['js']);
 });
 
-gulp.task('default', ['sass', 'less', 'stylus', 'js', 'bsync']);
+gulp.task('default', ['sass', 'less', 'stylus', 'js', 'bsync', 'watch']);
