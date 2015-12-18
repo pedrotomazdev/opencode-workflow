@@ -15,7 +15,8 @@
     "js-yaml": "^3.4.6"
   },
   "devDependencies": {
-    "browser-sync": "^2.10.0"
+    "browser-sync": "^2.10.0",
+    "gulp-imagemin": "^2.4.0"
   },
   "config": {
     "unsafe-perm": true

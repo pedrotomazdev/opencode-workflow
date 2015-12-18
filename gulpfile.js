@@ -12,6 +12,7 @@ var concat = require('gulp-concat');
 var less = require('gulp-less');
 var stylus = require('gulp-stylus');
 var minifyCSS = require('gulp-minify-css');
+var imagemin = require('gulp-imagemin');
 var bSync = require('browser-sync').create();
 var uglify = require('gulp-uglify');
 var path = require('path');
@@ -52,6 +53,7 @@ if (!URL) {
 
 const CSSPATH = FOLDER + '/css/';
 const JSPATH = FOLDER + '/js/';
+const IMGPATH = FOLDER + '/img/';
 
 gulp.task('sass', () => {
   gulp.src(CSSPATH + 'sass/theme.min.scss')
@@ -85,6 +87,20 @@ gulp.task('js', () => {
     .pipe(gulp.dest(JSPATH));
 });
 
+var imageFiles = [
+    IMGPATH + '**/*.{png,jpg,gif,svg}',
+    '!'+ IMGPATH + 'dist/*'
+];
+
+gulp.task('imagemin', () => {
+    gulp.src(imageFiles)
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}]
+		}))
+		.pipe(gulp.dest(IMGPATH + 'dist/'));
+});
+
 gulp.task('bsync', () => {
     bSync.init({
         logPrefix: 'Tray Opencode',
@@ -94,7 +110,7 @@ gulp.task('bsync', () => {
             target: URL
         },
         reloadDelay: 800,
-        port: 3000,
+        port: 8081,
         https: true,
         files: FOLDER + '/**/*.*'
     });
@@ -123,6 +139,7 @@ gulp.task('watch', () => {
     gulp.watch(CSSPATH + 'less/*', ['less']);
     gulp.watch(CSSPATH + 'stylus/*', ['stylus']);
     gulp.watch(JSPATH + 'modules/*.js', ['js']);
+    gulp.watch(imageFiles, ['imagemin']);
 });
 
 gulp.task('default', [
@@ -130,6 +147,7 @@ gulp.task('default', [
     'less',
     'stylus',
     'js',
+    'imagemin',
     'watch',
     'opencode',
     'bsync' // comment this line if you're using remotes envs (Cloud 9, etc...)
