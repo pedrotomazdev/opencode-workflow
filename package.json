@@ -22,6 +22,7 @@
     "unsafe-perm": true
   },
   "scripts": {
+    "preinstall": "sudo npm install -g gulp",
     "postinstall": "sudo gem install opencode_theme"
   },
   "author": "Richard Santos",

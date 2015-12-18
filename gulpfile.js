@@ -105,7 +105,7 @@ gulp.task('bsync', () => {
     bSync.init({
         logPrefix: 'Tray Opencode',
         logFileChanges: false,
-        open: 'local',
+        open: 'external',
         proxy: {
             target: URL
         },
@@ -139,16 +139,16 @@ gulp.task('watch', () => {
     gulp.watch(CSSPATH + 'less/*', ['less']);
     gulp.watch(CSSPATH + 'stylus/*', ['stylus']);
     gulp.watch(JSPATH + 'modules/*.js', ['js']);
-    gulp.watch(imageFiles, ['imagemin']);
+    // gulp.watch(imageFiles, ['imagemin']);
 });
 
 gulp.task('default', [
+    'watch',
+    'opencode',
+    'bsync', // comment this line if you're using remotes envs (Cloud 9, etc...)
     'sass',
     'less',
     'stylus',
     'js',
-    'imagemin',
-    'watch',
-    'opencode',
-    'bsync' // comment this line if you're using remotes envs (Cloud 9, etc...)
+    // 'imagemin',
  ]);
