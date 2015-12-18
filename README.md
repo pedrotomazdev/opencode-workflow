@@ -20,26 +20,29 @@ Pré-requisitos: NodeJS e NPM
 2. `cd opencode-workflow`
 3. `npm install`
 
-## Configuração/Uso OpenCode GEM
-Pré-requisito: `gem install opencode_theme`
+## Configuração/Uso
+
+Configure a loja que você vai trabalhar:
 
 1. `mkdir opencode.commercesuite.com.br`
 2. `cd opencode.commercesuite.com.br`
-3. `opencode configure 11451c354c1f95fe60f80d7672bf184a 14ae838d9e971465af45b35803b8f0a4 3` ou utilize suas credenciais: <br>
-   `opencode configure API_KEY PASSWORD THEME_ID`
+3. `opencode configure API_KEY PASSWORD THEME_ID` (veja a Obs: logo abaixo)
 4. `opencode download`
 
 **Obs:** API_KEY e PASSWORD são chaves individuais que o desenvolvedor deve solicitar ao lojista.<br>
-Essas chaves que estão na documentação são da loja de teste.
+Essas chaves que estão na documentação são da loja de teste: https://opencode.commercesuite.com.br.<br>
+Se quiser poderá utilizar essa loja com as seguintes credenciais:<br>
+`opencode configure 11451c354c1f95fe60f80d7672bf184a 14ae838d9e971465af45b35803b8f0a4 3`
 
-## Configuração/Uso OpenCode Workflow
+Após baixar todos os arquivos, volte para a pasta que contém o gulpfile.js e rode esse comando:
 
-1. `cd /path/to/opencode-workflow`
-2. `gulp --folder opencode.commercesuite.com.br`
+`gulp --folder opencode.commercesuite.com.br`
+
+Pronto, comece a editar seus arquivos e você verá o `gulp` e o `opencode` trabalhando por você!
 
 ## Estrutura de pastas
 
-Para que o task runner funcione corretamente, precisará existir essa estrutura de pastas:
+Para que o `gulp` funcione corretamente, precisará existir essa estrutura de pastas:
 
     opencode-workflow/
         opencode.commercesuite.com.br/
@@ -50,6 +53,13 @@ Para que o task runner funcione corretamente, precisará existir essa estrutura 
             pages/
             config.yml
         lojademo.commercesuite.com.br/
+            css/
+            js/
+            img/
+            layouts/
+            pages/
+            config.yml
+        outraloja.com.br/
             css/
             js/
             img/
