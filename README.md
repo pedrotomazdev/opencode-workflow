@@ -16,7 +16,7 @@ O Tray OpenCode Workflow é um conjunto de ferramentas frontend que agiliza a cr
 ## Instalação
 Pré-requisitos: NodeJS e NPM
 
-1. `git clone git@github.com:tray-tecnologia/opencode-workflow.git`
+1. `git clone https://github.com/tray-tecnologia/opencode-workflow.git`
 2. `cd opencode-workflow`
 3. `npm install`
 
