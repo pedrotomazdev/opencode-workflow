@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "gulpfile.js",
   "dependencies": {
+    "cross-spawn-async": "^2.2.4",
     "gulp": "^3.8.8",
     "gulp-concat": "^2.4.1",
     "gulp-exec": "^2.1.2",
@@ -22,8 +23,8 @@
     "unsafe-perm": true
   },
   "scripts": {
-    "preinstall": "sudo npm install -g gulp",
-    "postinstall": "sudo gem install opencode_theme"
+    "preinstall": "npm install -g gulp",
+    "postinstall": "gem install opencode_theme"
   },
   "author": "Richard Santos",
   "license": "MIT",

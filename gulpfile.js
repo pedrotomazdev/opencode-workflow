@@ -19,6 +19,7 @@ var path = require('path');
 var yaml = require('js-yaml');
 var process = require('process');
 var cp = require('child_process');
+var spawn = require('cross-spawn-async');
 
 /**
  * Get CLI args
@@ -112,14 +113,14 @@ gulp.task('bsync', () => {
         reloadDelay: 800,
         port: 8081,
         https: true,
-        files: FOLDER + '/**/*.*'
+        files: FOLDER + '**/**',
     });
 });
 
 gulp.task('opencode', () => {
     process.chdir(FOLDER);
 
-    var opencode = cp.spawn('opencode', ['watch']);
+    var opencode = spawn('opencode', ['watch']);
 
     opencode.stdout.on('data', (data) => {
         var output = util.colors.green(data);
