@@ -32,7 +32,7 @@ Configure a loja que você vai trabalhar:
 **Obs:** API_KEY e PASSWORD são chaves individuais que o desenvolvedor deve solicitar ao lojista.<br>
 Essas chaves que estão na documentação são da loja de teste: https://opencode.commercesuite.com.br.<br>
 Se quiser poderá utilizar essa loja com as seguintes credenciais:<br>
-`opencode configure 11451c354c1f95fe60f80d7672bf184a 14ae838d9e971465af45b35803b8f0a4 3`
+`opencode configure 20a699301d454509691f3ea02c1cba4b ea0727075e1639a42fd966a2f6e67abc 1`
 
 Após baixar todos os arquivos, volte para a pasta que contém o gulpfile.js e rode esse comando:
 
