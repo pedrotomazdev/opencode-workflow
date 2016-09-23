@@ -55,12 +55,14 @@ if (!URL) {
 const CSSPATH = FOLDER + '/css/';
 const JSPATH = FOLDER + '/js/';
 const IMGPATH = FOLDER + '/img/';
+const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', () => {
   gulp.src(CSSPATH + 'sass/theme.min.scss')
     .pipe(sass({errLogToConsole: true}))
     .on('error', util.log)
     .pipe(concat('theme.min.css'))
+    .pipe(autoprefixer())
     .pipe(minifyCSS())
     .pipe(gulp.dest(CSSPATH));
 });
@@ -69,6 +71,7 @@ gulp.task('less', () => {
     gulp.src(CSSPATH + 'less/theme.min.less')
     .pipe(less())
     .pipe(concat('theme.min.css'))
+    .pipe(autoprefixer())
     .pipe(minifyCSS())
     .pipe(gulp.dest(CSSPATH));
 });
@@ -77,6 +80,7 @@ gulp.task('stylus', () => {
     gulp.src(CSSPATH + 'stylus/theme.min.styl')
         .pipe(stylus())
         .pipe(concat('theme.min.css'))
+        .pipe(autoprefixer())
         .pipe(minifyCSS())
         .pipe(gulp.dest(CSSPATH));
 });
