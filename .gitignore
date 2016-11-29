@@ -7,3 +7,4 @@
 !gulpfile.js
 !README.md
 !*.sh
+!yarn.lock
