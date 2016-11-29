@@ -1,6 +1,6 @@
 {
   "name": "opencode-workflow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "gulpfile.js",
   "dependencies": {
     "cross-spawn-async": "^2.2.4",
