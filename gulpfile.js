@@ -135,7 +135,7 @@ gulp.task('opencode', () => {
     });
 
     opencode.stderr.on('data', (data) => {
-        process.stdout.write(util.colors.bgRed(prefix + data));
+        process.stdout.write(util.colors.bgRed(data));
     });
 });
 
