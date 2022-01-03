@@ -14,7 +14,7 @@ var stylus = require('gulp-stylus');
 var minifyCSS = require('gulp-minify-css');
 var imagemin = require('gulp-imagemin');
 var bSync = require('browser-sync').create();
-var uglify = require('gulp-uglify');
+// var uglify = require('gulp-uglify');
 var path = require('path');
 var yaml = require('js-yaml');
 var process = require('process');
@@ -88,7 +88,7 @@ gulp.task('stylus', () => {
 gulp.task('js', () => {
   gulp.src(JSPATH + "modules/*.js")
     .pipe(concat("theme.min.js"))
-    .pipe(uglify({"compress": false}))
+    // .pipe(uglify({"compress": false}))
     .pipe(gulp.dest(JSPATH));
 });
 

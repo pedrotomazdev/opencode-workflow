@@ -5,6 +5,7 @@
   "dependencies": {
     "cross-spawn-async": "^2.2.4",
     "gulp": "^3.8.8",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.4.1",
     "gulp-exec": "^2.1.2",
     "gulp-less": "^3.0.5",
@@ -13,8 +14,8 @@
     "gulp-stylus": "^2.1.1",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "js-yaml": "^3.4.6"
+    "js-yaml": "^3.4.6",
+    "sparkles": "^1.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.10.0",
@@ -24,8 +25,7 @@
     "unsafe-perm": true
   },
   "scripts": {
-    "preinstall": "npm install -g gulp",
-    "postinstall": "gem install opencode_theme"
+    "preinstall": "npm install -g gulp"
   },
   "author": "Richard Santos",
   "license": "MIT",
